@@ -1,0 +1,9 @@
+# Exclude all files by default
+*
+
+# Include distribution bundle but exclude test files if they are built into dist
+!dist/**
+*.test.*
+
+# Include documentation and version information in bundle
+!CONTRIBUTING.md
