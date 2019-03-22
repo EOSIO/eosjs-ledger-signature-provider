@@ -1,4 +1,4 @@
-# EOSJS for Ledger Signature Provider Interface
+# EOSJS Signature Provider for Ledger
 
 ## Overview
 A SignatureProvider for communicating with [eosjs](https://github.com/EOSIO/eosjs) from a Ledger device.
