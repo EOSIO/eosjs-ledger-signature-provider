@@ -1,4 +1,4 @@
-# EOSJS Signature Provider for Ledger
+# EOSJS Signature Provider for Ledger ![EOSIO Alpha](https://img.shields.io/badge/EOSIO-Alpha-blue.svg)
 
 ## Overview
 A SignatureProvider for communicating with [eosjs](https://github.com/EOSIO/eosjs) from a Ledger device.
