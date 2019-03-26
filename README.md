@@ -9,14 +9,14 @@ When plugged into `eosjs`, this signature provider enables applications to route
 
 ```bash
 # Using yarn
-yarn add @blockone/eosjs-ledger-signature-provider
+yarn add eosjs-ledger-signature-provider
 ```
 
 ## Usage
 
 #### Example
 ```javascript
-const { SignatureProvider } from '@blockone/eosjs-ledger-signature-provider'
+const { SignatureProvider } from 'eosjs-ledger-signature-provider'
 
 const signatureProvider = new SignatureProvider()
 
@@ -35,7 +35,7 @@ signatureProvider.sign({ chainId, serializedTransaction })
 #### Example with eosjs
 ```javascript
 const { Api, JsonRpc } from 'eosjs'
-const { SignatureProvider } from '@blockone/eosjs-ledger-signature-provider'
+const { SignatureProvider } from 'eosjs-ledger-signature-provider'
 
 const rpcEndpoint = 'https://localhost:3000'
 const signatureProvider = new SignatureProvider()
