@@ -1,6 +1,6 @@
 {
-  "name": "@blockone/eosjs-ledger-signature-provider",
-  "version": "0.0.3",
+  "name": "eosjs-ledger-signature-provider",
+  "version": "0.0.4",
   "description": "A Signature provider for communicating with eosjs from a Ledger device.",
   "author": {
     "name": "block.one",
