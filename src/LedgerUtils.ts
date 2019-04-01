@@ -32,17 +32,6 @@ export async function getTransport() {
   return cachedTransport
 }
 
-export const getAppConfiguration = () => (
-  this.transport.send(
-    LEDGER_CODES.CLA,
-    LEDGER_CODES.INS_GET_APP_CONFIGURATION,
-    LEDGER_CODES.P1_NON_CONFIRM,
-    LEDGER_CODES.P1_NON_CONFIRM,
-  )
-  .then(() => true)
-  .catch((err: any) => { throw Error(err) })
-)
-
 export const convertSignatures = (sigs: string[]): string[] => {
   if (!Array.isArray(sigs)) {
     sigs = [sigs]

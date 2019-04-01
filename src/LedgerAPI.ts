@@ -39,6 +39,17 @@ export class LedgerAPI implements LedgerAPIInterface {
     }
   }
 
+  public getAppConfiguration = () => (
+    this.transport.send(
+      LEDGER_CODES.CLA,
+      LEDGER_CODES.INS_GET_APP_CONFIGURATION,
+      LEDGER_CODES.P1_NON_CONFIRM,
+      LEDGER_CODES.P1_NON_CONFIRM,
+    )
+    .then(() => true)
+    .catch((err: any) => { throw Error(err) })
+  )
+
   /**
    * @returns [keys] An array of public keys
    */
