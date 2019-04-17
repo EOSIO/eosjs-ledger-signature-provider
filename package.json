@@ -14,11 +14,11 @@
   "main": "dist/index.js",
   "scripts": {
     "lint": "tslint -c tslint.json src/*.ts",
-    "build": "npm run clean & tsc -p ./tsconfig.json",
+    "build": "yarn clean & tsc -p ./tsconfig.json",
     "clean": "rm -rf dist",
     "coverage": "jest --coverage",
     "test": "jest",
-    "prepublish": "npm run build",
+    "prepublish": "yarn build",
     "docs": "typedoc --excludePrivate --excludeProtected --out ./docs --theme markdown"
   },
   "dependencies": {
