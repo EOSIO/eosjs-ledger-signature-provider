@@ -14,11 +14,11 @@
   "main": "dist/index.js",
   "scripts": {
     "lint": "tslint -c tslint.json src/*.ts",
-    "build": "npm run clean & tsc -p ./tsconfig.json",
+    "build": "yarn clean & tsc -p ./tsconfig.json",
     "clean": "rm -rf dist",
     "coverage": "jest --coverage",
     "test": "jest",
-    "prepublish": "npm run build",
+    "prepublish": "yarn build",
     "docs": "typedoc --excludePrivate --excludeProtected --out ./docs --theme markdown"
   },
   "dependencies": {
@@ -36,8 +36,7 @@
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/plugin-proposal-class-properties": "^7.3.0",
-    "@blockone/eslint-config-blockone": "^1.1.1",
-    "@blockone/tslint-config-blockone": "^1.0.0",
+    "@blockone/tslint-config-blockone": "^4.0.0",
     "@types/node": "^11.9.4",
     "babel-polyfill": "^6.26.0",
     "jest": "^24.1.0",
@@ -63,6 +62,6 @@
         "tsConfigFile": "tsconfig.json"
       }
     },
-    "testRegex": "(/src/.*(\\.|/)(test|spec))\\.(jsx?|tsx?)$"
+    "testRegex": "(/src/.*(\\.|/)(test|spec))\\.(ts?|tsx?)$"
   }
 }
