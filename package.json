@@ -1,6 +1,6 @@
 {
   "name": "eosjs-ledger-signature-provider",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A Signature provider for communicating with eosjs from a Ledger device.",
   "author": {
     "name": "block.one",
@@ -22,7 +22,7 @@
     "docs": "typedoc --excludePrivate --excludeProtected --out ./docs --theme markdown"
   },
   "dependencies": {
-    "@babel/core": "7.2.2",
+    "@babel/core": "7.6.0",
     "@babel/preset-env": "7.2.3",
     "@babel/preset-react": "7.0.0",
     "@ledgerhq/hw-transport": "4.48.0",
@@ -34,7 +34,7 @@
     "eosjs-ecc": "4.0.4"
   },
   "devDependencies": {
-    "@babel/cli": "^7.2.3",
+    "@babel/cli": "^7.6.0",
     "@babel/plugin-proposal-class-properties": "^7.3.0",
     "@blockone/tslint-config-blockone": "^4.0.0",
     "@types/node": "^11.9.4",
