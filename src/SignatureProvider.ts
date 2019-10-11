@@ -6,14 +6,14 @@ interface SignatureProviderInterface {
   eosjsApi: Api
   ledgerApi: LedgerAPI
   cachedKeys: string[]
-  cachedKeysFull: { indexNumber: number, key: string }[]
+  cachedKeysFull: Array<{ indexNumber: number, key: string }>
 }
 
 export class SignatureProvider implements SignatureProviderInterface {
   public eosjsApi: Api = null
   public ledgerApi: LedgerAPI = null
   public cachedKeys: string[] = []
-  public cachedKeysFull: { indexNumber: number, key: string }[] = []
+  public cachedKeysFull: Array<{ indexNumber: number, key: string }> = []
 
   public async getLedgerApi() {
     if (this.ledgerApi) {
@@ -26,20 +26,20 @@ export class SignatureProvider implements SignatureProviderInterface {
   }
 
   /** Public keys associated with the private keys that the `SignatureProvider` holds */
-  public async getAvailableKeys(requestPermission?: boolean, indexArray?: Array<number>) {
+  public async getAvailableKeys(requestPermission?: boolean, indexArray?: number[]) {
     try {
-      const api = await this.getLedgerApi();
-      if (!indexArray || !indexArray.length) indexArray = [0];
-      let keys = this.cachedKeysFull.slice();
-      for (const indexNumber of indexArray){
-        let cached = keys.find(key=>key.indexNumber==indexNumber);
-        if (!cached){
-          let key = await api.getPublicKey(requestPermission, indexNumber);
+      const api = await this.getLedgerApi()
+      if (!indexArray || !indexArray.length) {indexArray = [0]}
+      const keys = this.cachedKeysFull.slice()
+      for (const indexNumber of indexArray) {
+        const cached = keys.find((key) => key.indexNumber === indexNumber)
+        if (!cached) {
+          const key = await api.getPublicKey(requestPermission, indexNumber)
           keys.push({indexNumber, key})
         }
-      } 
-      this.cachedKeysFull = keys;
-      this.cachedKeys = this.cachedKeysFull.map(key=>key.key)
+      }
+      this.cachedKeysFull = keys
+      this.cachedKeys = this.cachedKeysFull.map((key) => key.key)
       return this.cachedKeys
     } catch (error) {
       throw error
@@ -47,7 +47,9 @@ export class SignatureProvider implements SignatureProviderInterface {
   }
 
   /** Sign a transaction */
-  public async sign({ chainId, serializedTransaction, indexNumber}: { chainId: string, serializedTransaction: Uint8Array, indexNumber?: number }) {
+  public async sign(
+    { chainId, serializedTransaction, indexNumber}:
+    { chainId: string, serializedTransaction: Uint8Array, indexNumber?: number }) {
     try {
       const api = await this.getLedgerApi()
       const signatures = await api.signTransaction({ chainId, serializedTransaction, indexNumber })
