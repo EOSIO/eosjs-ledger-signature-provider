@@ -26,7 +26,7 @@ export class SignatureProvider implements SignatureProviderInterface {
   }
 
   /** Public keys associated with the private keys that the `SignatureProvider` holds */
-  public async getAvailableKeys(requestPermission?: boolean, indexArray?: number[]) {
+  public async getAvailableKeys(requestPermission: boolean = false, indexArray?: number[]) {
     try {
       const api = await this.getLedgerApi()
       if (!indexArray || !indexArray.length) {indexArray = [0]}
