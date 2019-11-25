@@ -46,7 +46,12 @@ export class LedgerAPI implements LedgerAPIInterface {
       LEDGER_CODES.P1_NON_CONFIRM,
       LEDGER_CODES.P1_NON_CONFIRM,
     )
-    .then((result: any) => `${result[1]}.${result[2]}.${result[3]}` )
+    .then((result: any) => {
+      return { 
+        version: `${result[1]}.${result[2]}.${result[3]}`, 
+        arbitraryData: result[0] === 1 
+      }
+    })
     .catch((err: any) => { throw err })
   )
 
