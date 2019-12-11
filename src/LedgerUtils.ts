@@ -1,8 +1,6 @@
 import Transport from '@ledgerhq/hw-transport-u2f'
 import { Api, JsonRpc, Serialize } from 'eosjs'
-import { JsSignatureProvider } from 'eosjs/dist/eosjs-jssig'
-
-import ecc from 'eosjs-ecc'
+import { JsSignatureProvider, Signature } from 'eosjs/dist/eosjs-jssig'
 
 import asn1 from 'asn1-ber'
 import Buff from 'buffer/'
@@ -32,7 +30,8 @@ export async function getTransport() {
   return cachedTransport
 }
 
-export const convertSignatures = (sigs: string[]): string[] => {
+export const convertSignatures = (sigs: string[],
+                                  signatureConversion: (signature: string) => string = convertSignature): string[] => {
   if (!Array.isArray(sigs)) {
     sigs = [sigs]
   }
@@ -42,7 +41,7 @@ export const convertSignatures = (sigs: string[]): string[] => {
   for (let i = 0; i < sigs.length; i++) {
     const sig = sigs[i]
     if (typeof sig === 'string' && sig.length === 130) {
-      sigs[i] = ecc.Signature.from(sig).toString()
+      sigs[i] = signatureConversion(sig)
     }
   }
 
@@ -116,4 +115,8 @@ const createNewBuffer = (api: Api, type: string, data: any) => {
 
 const encode = (writer: any , buffer: Uint8Array) => {
   writer.writeBuffer(Buff.Buffer.from(buffer), asn1.Ber.OctetString)
+}
+
+const convertSignature = (sig: string): string => {
+  return Signature.fromString(sig).toString()
 }
