@@ -22,7 +22,7 @@ export enum LEDGER_CODES {
 export const GET_LEDGER_PATHS =  (index = 0) => `44'/194'/0'/0/${index}`
 
 let cachedTransport: any
-export async function getTransport() {
+export const getTransport = async () => {
   if (cachedTransport) {
     return cachedTransport
   }
@@ -31,7 +31,7 @@ export async function getTransport() {
 }
 
 export const convertSignatures = (sigs: string[],
-                                  signatureConversion: (signature: string) => string = convertSignature): string[] => {
+  signatureConversion: (signature: string) => string = convertSignature): string[] => {
   if (!Array.isArray(sigs)) {
     sigs = [sigs]
   }

@@ -17,6 +17,7 @@ export interface LedgerAPIInterface {
 
 /**
  * Ledger API
+ *
  * @param transport Ledger transport method
  */
 export class LedgerAPI implements LedgerAPIInterface {
@@ -46,13 +47,13 @@ export class LedgerAPI implements LedgerAPIInterface {
       LEDGER_CODES.P1_NON_CONFIRM,
       LEDGER_CODES.P1_NON_CONFIRM,
     )
-    .then((result: any) => {
-      return {
-        version: `${result[1]}.${result[2]}.${result[3]}`,
-        arbitraryData: result[0] === 1
-      }
-    })
-    .catch((err: any) => { throw Error(err) })
+      .then((result: any) => {
+        return {
+          version: `${result[1]}.${result[2]}.${result[3]}`,
+          arbitraryData: result[0] === 1
+        }
+      })
+      .catch((err: any) => { throw Error(err) })
   )
 
   /**
@@ -99,7 +100,7 @@ export class LedgerAPI implements LedgerAPIInterface {
    */
   public async signTransaction(
     { chainId, serializedTransaction }: { chainId: string, serializedTransaction: Uint8Array }
-    ) {
+  ) {
     const path = GET_LEDGER_PATHS(this.addressIndex)
     const paths = bippath.fromString(path).toPathArray()
     let offset = 0
@@ -145,19 +146,19 @@ export class LedgerAPI implements LedgerAPIInterface {
           i === 0 ? LEDGER_CODES.P1_FIRST : LEDGER_CODES.P1_MORE,
           LEDGER_CODES.P1_NON_CONFIRM,
           data,
-         )
+        )
         .then((apduResponse: any) => {
           response = apduResponse
           return response
         })
-      ).then(() => {
-        const v = response.slice(0, 1).toString('hex')
-        const r = response.slice(1, 1 + 32).toString('hex')
-        const s = response.slice(1 + 32, 1 + 32 + 32).toString('hex')
-        return convertSignatures(v + r + s)
-      }).catch((error) => {
-        console.error(error)
-        throw error
-      })
+    ).then(() => {
+      const v = response.slice(0, 1).toString('hex')
+      const r = response.slice(1, 1 + 32).toString('hex')
+      const s = response.slice(1 + 32, 1 + 32 + 32).toString('hex')
+      return convertSignatures(v + r + s)
+    }).catch((error) => {
+      console.error(error)
+      throw error
+    })
   }
 }
