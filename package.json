@@ -22,32 +22,32 @@
     "docs": "typedoc --excludePrivate --excludeProtected --out ./docs --theme markdown"
   },
   "dependencies": {
-    "@babel/core": "7.6.0",
-    "@babel/preset-env": "7.2.3",
-    "@babel/preset-react": "7.0.0",
-    "@ledgerhq/hw-transport": "5.0.0-babel7.3",
-    "@ledgerhq/hw-transport-u2f": "5.0.0-babel7.3",
-    "@types/elliptic": "6.4.10",
-    "@types/jest": "24.0.25",
+    "@babel/core": "7.8.7",
+    "@babel/preset-env": "7.8.7",
+    "@babel/preset-react": "7.8.3",
+    "@ledgerhq/hw-transport": "5.11.0",
+    "@ledgerhq/hw-transport-u2f": "5.11.0",
+    "@types/elliptic": "6.4.12",
+    "@types/jest": "25.1.4",
     "asn1-ber": "1.0.9",
     "bip32-path": "0.4.2",
-    "buffer": "5.2.1",
+    "buffer": "5.5.0",
     "eosjs": "20.0.4-67ee21f.0",
-    "elliptic": "6.5.0"
+    "elliptic": "6.5.2"
   },
   "devDependencies": {
-    "@babel/cli": "^7.6.0",
-    "@babel/plugin-proposal-class-properties": "^7.3.0",
+    "@babel/cli": "^7.8.4",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@blockone/tslint-config-blockone": "^4.0.0",
     "@types/node": "^11.9.4",
-    "jest": "^24.9.0",
-    "ts-jest": "^24.2.0",
-    "tslib": "^1.9.3",
+    "jest": "^25.1.0",
+    "ts-jest": "^25.2.1",
+    "tslib": "^1.11.1",
     "tslint": "^5.11.0",
     "tslint-eslint-rules": "^5.4.0",
-    "typedoc": "^0.15.6",
-    "typedoc-plugin-markdown": "^1.1.19",
-    "typescript": "^3.2.2"
+    "typedoc": "^0.16.11",
+    "typedoc-plugin-markdown": "^2.2.17",
+    "typescript": "^3.8.3"
   },
   "jest": {
     "moduleFileExtensions": [
