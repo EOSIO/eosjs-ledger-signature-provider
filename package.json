@@ -14,7 +14,7 @@
   "main": "dist/index.js",
   "scripts": {
     "lint": "eslint --ext .js,.jsx,.ts,.tsx src",
-    "build": "rm -rf dist & tsc -p ./tsconfig.json",
+    "build": "rm -rf dist && tsc -p ./tsconfig.json",
     "test": "jest",
     "prepare": "yarn build",
     "docs": "typedoc --excludePrivate --excludeProtected --out ./docs --theme markdown"
