@@ -53,6 +53,6 @@ describe('JsSignatureProvider', () => {
   })
 })
 
-function mockConvertSignature(signature: string) {
+const mockConvertSignature = (signature: string) => {
   return mockedConvertedSignatureValue
 }
