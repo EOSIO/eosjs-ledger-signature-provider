@@ -58,10 +58,10 @@ export class LedgerAPI implements LedgerAPIInterface {
   /**
    * @returns [keys] An array of public keys
    */
-  public getPublicKey(requestPermission: boolean = true): Promise<string> {
+  public getPublicKey(requestPermission: boolean = true, indexNumber: number = this.addressIndex): Promise<string> {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        const path = GET_LEDGER_PATHS(this.addressIndex)
+        const path = GET_LEDGER_PATHS(indexNumber)
         const paths = bippath.fromString(path).toPathArray()
         const buffer = Buff.Buffer.alloc(1 + paths.length * 4)
         buffer[0] = paths.length
@@ -98,9 +98,10 @@ export class LedgerAPI implements LedgerAPIInterface {
    * @returns A Signed eos transaction
    */
   public async signTransaction(
-    { chainId, serializedTransaction }: { chainId: string, serializedTransaction: Uint8Array }
+    { chainId, serializedTransaction, indexNumber = this.addressIndex }:
+    { chainId: string, serializedTransaction: Uint8Array, indexNumber: number }
     ) {
-    const path = GET_LEDGER_PATHS(this.addressIndex)
+    const path = GET_LEDGER_PATHS(indexNumber)
     const paths = bippath.fromString(path).toPathArray()
     let offset = 0
     let transactionBuffer
